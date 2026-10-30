@@ -156,7 +156,7 @@ return ( <section className="product-form-container"> <h2>Product not found</h2>
 )
 }
 
-return ( <section className="product-form-container"> <h2>{isEditing ? 'Edit Product' : 'Create New Product'}</h2>
+return ( <section className="product-form-container"> <Link to="/" className="back-link">← Back to Products</Link> <h2>{isEditing ? 'Edit Product' : 'Create New Product'}</h2>
 
 
   <form onSubmit={handleSubmit} noValidate>

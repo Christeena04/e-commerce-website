@@ -1,72 +1,67 @@
 import { useNavigate, Link, useParams } from 'react-router-dom'
 
-function ProductDetails({
-products,
-onUpdateProduct,
-onDeleteProduct,
-}) {
-const { id } = useParams()
-const navigate = useNavigate()
+function ProductDetails({ products, onUpdateProduct, onDeleteProduct }) {
+  const { id } = useParams()
+  const navigate = useNavigate()
 
-const product = products.find(
-(item) => String(item.id) === id
-)
+  const product = products.find((item) => String(item.id) === id)
 
-if (!product) {
-return ( <div className="product-details"> <Link to="/">← Back to Products</Link> <h2>Product not found.</h2> </div>
-)
-}
+  if (!product) {
+    return (
+      <div className="product-details not-found">
+        <Link to="/" className="back-link">← Back to Products</Link>
+        <h2>Product not found.</h2>
+      </div>
+    )
+  }
 
-function handleDelete() {
-const confirmDelete = window.confirm(
-'Are you sure you want to delete this product?'
-)
+  function handleDelete() {
+    const confirmDelete = window.confirm(
+      'Are you sure you want to delete this product?'
+    )
 
+    if (confirmDelete) {
+      onDeleteProduct(product.id)
+      navigate('/')
+    }
+  }
 
-if (confirmDelete) {
-  onDeleteProduct(product.id)
-  navigate('/')
-}
+  return (
+    <div className="product-details">
+      <Link to="/" className="back-link">← Back to Products</Link>
 
+      {/* Two columns on desktop: image left, info right */}
+      <div className="details-layout">
+        <div className="details-media">
+          <img
+            src={product.image}
+            alt={product.title}
+            className="details-image"
+          />
+        </div>
 
-}
+        <div className="details-info">
+          <span className="category-label">{product.category}</span>
+          <h1>{product.title}</h1>
+          <h2>${Number(product.price).toFixed(2)}</h2>
+          <p>{product.description}</p>
 
-return ( <div className="product-details"> <Link to="/">← Back to Products</Link>
+          <div className="product-actions">
+            <button
+              type="button"
+              onClick={() => navigate(`/edit-product/${product.id}`)}
+            >
+              Edit Product
+            </button>
 
-
-  <img
-    src={product.image}
-    alt={product.title}
-    className="details-image"
-  />
-
-  <h1>{product.title}</h1>
-  <h2>${Number(product.price).toFixed(2)}</h2>
-  <p>{product.description}</p>
-
-  <p>
-    <strong>Category:</strong> {product.category}
-  </p>
-
-  <div className="product-actions">
-    <button
-      type="button"
-      onClick={() => navigate(`/edit-product/${product.id}`)}
-    >
-      Edit Product
-    </button>
-
-    <button
-      type="button"
-      onClick={handleDelete}
-    >
-      Delete Product
-    </button>
-  </div>
-</div>
-
-
-)
+            <button type="button" onClick={handleDelete}>
+              Delete Product
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  )
 }
 
 export default ProductDetails

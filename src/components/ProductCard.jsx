@@ -1,24 +1,30 @@
 import { Link } from 'react-router-dom'
 
 function ProductCard({ product }) {
-return (
-<Link
-to={`/product/${product.id}`}
-className="product-card-link"
-> <div className="product-card"> <img
-       src={product.image}
-       alt={product.title}
-       className="product-image"
-     />
+  return (
+    <Link to={`/product/${product.id}`} className="product-card-link">
+      <div className="product-card">
+        <div className="product-image-wrap">
+          <img
+            src={product.image}
+            alt={product.title}
+            className="product-image"
+          />
+        </div>
 
+        <span className="category-label">{product.category}</span>
+        <h2>{product.title}</h2>
 
-    <h2>{product.title}</h2>
-    <p>${product.price}</p>
-  </div>
-</Link>
-
-
-)
+        {/* Newly added products have no rating, so check first */}
+        {product.rating && (
+          <span className="product-rating">
+            ★ {product.rating.rate} ({product.rating.count})
+          </span>
+        )}
+        <p>${Number(product.price).toFixed(2)}</p>
+      </div>
+    </Link>
+  )
 }
 
 export default ProductCard
