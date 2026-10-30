@@ -150,7 +150,7 @@ element={ <div className="store-container"> <header className="store-header"> <L
         {/* One combined hero image (file lives in the public folder) */}
         <div className="hero-media">
           <img
-            src="/hero.svg"
+            src="/e-commerce-website/hero.svg"
             alt="Clothing, accessories and electronics"
           />
         </div>
