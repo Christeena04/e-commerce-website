@@ -1,52 +1,34 @@
-import { useEffect, useState } from 'react'
-import { Link, useParams } from 'react-router-dom'
+import { useNavigate, Link, useParams } from 'react-router-dom'
 
-function ProductDetails() {
+function ProductDetails({
+products,
+onUpdateProduct,
+onDeleteProduct,
+}) {
 const { id } = useParams()
+const navigate = useNavigate()
 
-const [product, setProduct] = useState(null)
-const [loading, setLoading] = useState(true)
-const [error, setError] = useState('')
+const product = products.find(
+(item) => String(item.id) === id
+)
 
-useEffect(() => {
-const fetchProduct = async () => {
-try {
-setLoading(true)
-setError('')
-
-
-    const response = await fetch(
-      `https://fakestoreapi.com/products/${id}`
-    )
-
-    if (!response.ok) {
-      throw new Error('Failed to fetch product details')
-    }
-
-    const data = await response.json()
-    setProduct(data)
-  } catch (err) {
-    setError(err.message)
-  } finally {
-    setLoading(false)
-  }
+if (!product) {
+return ( <div className="product-details"> <Link to="/">← Back to Products</Link> <h2>Product not found.</h2> </div>
+)
 }
 
-fetchProduct()
+function handleDelete() {
+const confirmDelete = window.confirm(
+'Are you sure you want to delete this product?'
+)
 
 
-}, [id])
-
-if (loading) {
-return <p>Loading product details...</p>
+if (confirmDelete) {
+  onDeleteProduct(product.id)
+  navigate('/')
 }
 
-if (error) {
-return <p>{error}</p>
-}
 
-if (!product || !product.id) {
-return <p>Product not found.</p>
 }
 
 return ( <div className="product-details"> <Link to="/">← Back to Products</Link>
@@ -59,12 +41,28 @@ return ( <div className="product-details"> <Link to="/">← Back to Products</Li
   />
 
   <h1>{product.title}</h1>
-  <h2>${product.price}</h2>
+  <h2>${Number(product.price).toFixed(2)}</h2>
   <p>{product.description}</p>
 
   <p>
     <strong>Category:</strong> {product.category}
   </p>
+
+  <div className="product-actions">
+    <button
+      type="button"
+      onClick={() => navigate(`/edit-product/${product.id}`)}
+    >
+      Edit Product
+    </button>
+
+    <button
+      type="button"
+      onClick={handleDelete}
+    >
+      Delete Product
+    </button>
+  </div>
 </div>
 
 
