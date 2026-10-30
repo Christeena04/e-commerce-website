@@ -1,3 +1,4 @@
+
 import { Link } from 'react-router-dom'
 
 function ProductCard({ product }) {
@@ -13,14 +14,9 @@ function ProductCard({ product }) {
         </div>
 
         <span className="category-label">{product.category}</span>
+
         <h2>{product.title}</h2>
 
-        {/* Newly added products have no rating, so check first */}
-        {product.rating && (
-          <span className="product-rating">
-            ★ {product.rating.rate} ({product.rating.count})
-          </span>
-        )}
         <p>${Number(product.price).toFixed(2)}</p>
       </div>
     </Link>
@@ -28,3 +24,4 @@ function ProductCard({ product }) {
 }
 
 export default ProductCard
+

@@ -1,15 +1,21 @@
+
 import { useNavigate, Link, useParams } from 'react-router-dom'
 
-function ProductDetails({ products, onUpdateProduct, onDeleteProduct }) {
+function ProductDetails({ products, onDeleteProduct }) {
   const { id } = useParams()
   const navigate = useNavigate()
 
-  const product = products.find((item) => String(item.id) === id)
+  const product = products.find(
+    (item) => String(item.id) === id
+  )
 
   if (!product) {
     return (
-      <div className="product-details not-found">
-        <Link to="/" className="back-link">← Back to Products</Link>
+      <div className="product-details">
+        <Link to="/" className="back-link">
+          ← Back to Products
+        </Link>
+
         <h2>Product not found.</h2>
       </div>
     )
@@ -28,9 +34,10 @@ function ProductDetails({ products, onUpdateProduct, onDeleteProduct }) {
 
   return (
     <div className="product-details">
-      <Link to="/" className="back-link">← Back to Products</Link>
+      <Link to="/" className="back-link">
+        ← Back to Products
+      </Link>
 
-      {/* Two columns on desktop: image left, info right */}
       <div className="details-layout">
         <div className="details-media">
           <img
@@ -41,9 +48,14 @@ function ProductDetails({ products, onUpdateProduct, onDeleteProduct }) {
         </div>
 
         <div className="details-info">
-          <span className="category-label">{product.category}</span>
+          <span className="category-label">
+            {product.category}
+          </span>
+
           <h1>{product.title}</h1>
+
           <h2>${Number(product.price).toFixed(2)}</h2>
+
           <p>{product.description}</p>
 
           <div className="product-actions">
@@ -65,3 +77,4 @@ function ProductDetails({ products, onUpdateProduct, onDeleteProduct }) {
 }
 
 export default ProductDetails
+
