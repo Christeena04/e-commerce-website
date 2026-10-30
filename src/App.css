@@ -122,8 +122,23 @@ button, input, textarea, select { font: inherit; }
   border: 1px solid #e5e1d8;
   border-radius: 8px;
   background: white;
+
+  /* Smooth animation */
+  transition: transform 0.25s ease, box-shadow 0.25s ease,
+    border-color 0.25s ease;
 }
-.product-card-link:hover .product-card { border-color: #a45b27; }
+
+/* Move the card up when hovered */
+.product-card-link:hover .product-card {
+  transform: translateY(-5px);
+  border-color: #a45b27;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+}
+
+/* Slightly shrink the card when clicked */
+.product-card-link:active .product-card {
+  transform: scale(0.98);
+}
 .product-image-wrap {
   display: flex;
   align-items: center;
