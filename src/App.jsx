@@ -110,7 +110,6 @@ element={<HomePage products={products} />}
     element={
       <ProductDetails
         products={products}
-        onUpdateProduct={handleUpdateProduct}
         onDeleteProduct={handleDeleteProduct}
       />
     }
@@ -127,6 +126,7 @@ element={<HomePage products={products} />}
     }
   />
 </Routes>
+
 
 )
 }
