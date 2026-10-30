@@ -99,10 +99,6 @@ function App() {
               </Link>
 
               <nav className="store-nav">
-                <Link to="/" className="nav-link">
-                
-                </Link>
-
                 <Link
                   to="/add-product"
                   className="add-product-button"
