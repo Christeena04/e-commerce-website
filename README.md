@@ -78,6 +78,11 @@ npm run lint      # check the code with ESLint
 | `/product/:id` | Product details |
 | `/edit-product/:id` | Edit product form |
 
+## Product Data Handling
+
+The initial product list is fetched from the Fake Store API. When a product is added, edited or deleted, the changes are managed using React state on the client side. These changes are not permanently saved to the API, so refreshing the page restores the original API data.
+
+
 
 ## Project Structure
 
