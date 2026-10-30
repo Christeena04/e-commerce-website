@@ -30,9 +30,6 @@ function HomePage({ products }) {
             Clothing, jewelry and electronics from our catalogue.
           </p>
 
-          <a href="#products" className="hero-button">
-            Browse products
-          </a>
         </div>
 
         <div className="hero-media">

@@ -151,11 +151,16 @@ function ProductForm({ onAddProduct, onUpdateProduct, products = [] }) {
       </Link>
 
       <h2>{isEditing ? 'Edit Product' : 'Create New Product'}</h2>
+      <p className="required-note">
+  Fields marked <span className="required-star">*</span> are required.
+</p>
 
       <form onSubmit={handleSubmit} noValidate>
         {/* Product title */}
         <div className="form-group">
-          <label htmlFor="title">Product Title</label>
+          <label htmlFor="title">
+  Product Title <span className="required-star">*</span>
+</label>
 
           <input
             type="text"
@@ -173,7 +178,9 @@ function ProductForm({ onAddProduct, onUpdateProduct, products = [] }) {
 
         {/* Product price */}
         <div className="form-group">
-          <label htmlFor="price">Price (USD)</label>
+          <label htmlFor="price">
+  Price (USD) <span className="required-star">*</span>
+</label>
 
           <input
             type="number"
@@ -193,7 +200,9 @@ function ProductForm({ onAddProduct, onUpdateProduct, products = [] }) {
 
         {/* Product description */}
         <div className="form-group">
-          <label htmlFor="description">Description</label>
+          <label htmlFor="description">
+  Description <span className="required-star">*</span>
+</label>
 
           <textarea
             id="description"
@@ -211,7 +220,9 @@ function ProductForm({ onAddProduct, onUpdateProduct, products = [] }) {
 
         {/* Product category */}
         <div className="form-group">
-          <label htmlFor="category">Category</label>
+          <label htmlFor="category">
+  Category <span className="required-star">*</span>
+</label>
 
           <select
             id="category"
@@ -224,6 +235,7 @@ function ProductForm({ onAddProduct, onUpdateProduct, products = [] }) {
             <option value="jewelery">Jewelry</option>
             <option value="men's clothing">Men's Clothing</option>
             <option value="women's clothing">Women's Clothing</option>
+             <option value="food products">Food Products</option>
           </select>
 
           {errors.category && (
@@ -233,8 +245,9 @@ function ProductForm({ onAddProduct, onUpdateProduct, products = [] }) {
 
         {/* Product image URL */}
         <div className="form-group">
-          <label htmlFor="image">Image URL</label>
-
+          <label htmlFor="image">
+  Image URL <span className="required-star">*</span>
+</label>
           <input
             type="url"
             id="image"

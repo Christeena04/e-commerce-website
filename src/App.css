@@ -313,3 +313,14 @@ button, input, textarea, select { font: inherit; }
     transform: translateY(0);
   }
 }
+
+.required-star {
+  color: #dc2626;
+  margin-left: 3px;
+  font-weight: 600;
+}
+.required-note {
+  margin: 8px 0 20px;
+  font-size: 14px;
+  color: #666;
+}
