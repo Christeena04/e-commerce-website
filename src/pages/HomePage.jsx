@@ -6,7 +6,6 @@ function HomePage({ products }) {
   return (
     <div className="store-container">
       
-
       <section className="store-hero">
         <div className="hero-text">
           <p className="hero-label">WELCOME TO MYSTORE</p>
