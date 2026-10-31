@@ -1,9 +1,24 @@
 import { useState, useEffect } from 'react'
-import { Routes, Route } from 'react-router-dom'
+import { Routes, Route, Link } from 'react-router-dom'
 import HomePage from './pages/HomePage'
 import ProductDetails from './components/ProductDetails'
 import ProductForm from './components/ProductForm'
 import './App.css'
+
+// make header visible
+function Header() {
+return ( <header className="store-header"> <Link to="/" className="store-logo">
+MyStore<span>.</span> </Link>
+
+  <nav className="store-nav">
+    <Link to="/add-product" className="add-product-button">
+      Add Product
+    </Link>
+  </nav>
+</header>
+
+)
+}
 
 function App() {
 const [products, setProducts] = useState([])
@@ -85,7 +100,10 @@ return ( <div className="status-box error"> <p>{error}</p> </div>
 )
 }
 
-return ( <Routes>
+return ( 
+    <>
+    <Header />
+    <Routes>
 {/* Homepage */}
 <Route
 path="/"
@@ -127,7 +145,7 @@ element={<HomePage products={products} />}
   />
 </Routes>
 
-
+ </>
 )
 }
 

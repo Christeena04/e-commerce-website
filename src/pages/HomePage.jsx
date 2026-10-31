@@ -5,20 +5,7 @@ import ProductList from '../components/ProductList'
 function HomePage({ products }) {
   return (
     <div className="store-container">
-      <header className="store-header">
-        <Link to="/" className="store-logo">
-          MyStore<span>.</span>
-        </Link>
-
-        <nav className="store-nav">
-          <Link
-            to="/add-product"
-            className="add-product-button"
-          >
-            Add Product
-          </Link>
-        </nav>
-      </header>
+      
 
       <section className="store-hero">
         <div className="hero-text">
