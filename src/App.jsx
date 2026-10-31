@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react'
-import { Routes, Route, Link } from 'react-router-dom'
+import { Routes, Route, Link, useLocation } from 'react-router-dom'
 import HomePage from './pages/HomePage'
 import ProductDetails from './components/ProductDetails'
 import ProductForm from './components/ProductForm'
@@ -7,18 +7,26 @@ import './App.css'
 
 // make header visible
 function Header() {
+const location = useLocation()
+
 return ( <header className="store-header"> <Link to="/" className="store-logo">
 MyStore<span>.</span> </Link>
 
+
   <nav className="store-nav">
+    {location.pathname !== '/add-product' &&
+  !location.pathname.startsWith('/edit-product/') && (
     <Link to="/add-product" className="add-product-button">
       Add Product
     </Link>
+)}
   </nav>
 </header>
 
+
 )
 }
+
 
 function App() {
 const [products, setProducts] = useState([])
