@@ -36,7 +36,7 @@ function HomePage({ products }) {
       </section>
 
       <footer className="store-footer">
-        © 2026 MyStore. Built with React.
+        © 2026 MyStore. All rights reserved.
       </footer>
     </div>
   )
